@@ -1,0 +1,28 @@
+name: Push Code to Another Repository
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  push_code:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout Source Repository
+        uses: actions/checkout@v2
+        with:
+          ref: master
+      
+      - name: Configure Git for Target Repository
+        run: |
+          git config --global user.email "tanya0705singh@gmail.com"
+          git config --global user.name "TanyaSingh0705"
+          git remote add target_repo https://github.com/TanyaSingh0705/plain-cipher-test.git
+
+      - name: Push to Target Repository
+        run: |
+          git push target_repo main
+        env:
+          PAT: ${{ secrets.PAT }}
