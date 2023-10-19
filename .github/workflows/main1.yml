@@ -23,6 +23,6 @@ jobs:
 
       - name: Push to Target Repository
         run: |
-          git push target_repo main
+          git push target_repo master
         env:
           PAT: ${{ secrets.PAT }}
