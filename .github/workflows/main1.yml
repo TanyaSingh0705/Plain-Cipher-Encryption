@@ -19,10 +19,7 @@ jobs:
         run: |
           git config --global user.email "tanya0705singh@gmail.com"
           git config --global user.name "TanyaSingh0705"
-          git remote add target_repo https://github.com/TanyaSingh0705/plain-cipher-test.git
-
+          git remote add target_repo https://x-access-token:${{ secrets.PAT }}@github.com/TanyaSingh0705/plain-cipher-test.git
       - name: Push to Target Repository
         run: |
           git push target_repo master
-        env:
-          PAT: ${{ secrets.PAT }}
